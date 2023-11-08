@@ -4,13 +4,13 @@ import com.example.tasklist.domain.exception.AccessDeniedException;
 import com.example.tasklist.domain.user.Role;
 import com.example.tasklist.domain.user.User;
 import com.example.tasklist.service.UserService;
+import com.example.tasklist.service.props.JwtProperties;
 import com.example.tasklist.web.dto.auth.JwtResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -117,7 +117,7 @@ public class JwtTokenProvider {
                 .build()
                 .parseClaimsJws(token);
         return !claims.getBody().getExpiration().before(new Date());
-    }
+    } 
 
     private List<String> resolveRoles(Set<Role> roles) {
         return roles.stream()

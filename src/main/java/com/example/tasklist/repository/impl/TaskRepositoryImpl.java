@@ -15,7 +15,7 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public List<Task> findAllByUserID(Long userId) {
+    public List<Task> findAllByUserId(Long userId) {
         return null;
     }
 

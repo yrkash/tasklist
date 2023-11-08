@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface TaskRepository {
     Optional<Task> findById(Long id);
 
-    List<Task> findAllByUserID(Long userId);
+    List<Task> findAllByUserId(Long userId);
 
     void assignToUserById(Long taskId, Long userId);
 
