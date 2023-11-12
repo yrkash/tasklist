@@ -3,8 +3,10 @@ package com.example.tasklist.repository;
 import com.example.tasklist.domain.user.Role;
 import com.example.tasklist.domain.user.User;
 
+
 import java.util.Optional;
 
+//@Mapper
 public interface UserRepository {
 
     Optional<User> findById(Long id);
@@ -15,9 +17,9 @@ public interface UserRepository {
 
     void create(User user);
 
-    void insertUserRole(Long userId, Role role);
+    void insertUserRole(Long userId,Role role);
 
-    boolean isTaskOwner(Long userId, Long taskId);
+    boolean isTaskOwner(Long userId,Long taskId);
 
     void delete(Long id);
 }

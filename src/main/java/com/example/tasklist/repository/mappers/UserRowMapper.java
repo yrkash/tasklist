@@ -1,7 +1,7 @@
 package com.example.tasklist.repository.mappers;
 
+import com.example.tasklist.domain.task.Task;
 import com.example.tasklist.domain.user.Role;
-import com.example.tasklist.domain.user.Task;
 import com.example.tasklist.domain.user.User;
 import lombok.SneakyThrows;
 

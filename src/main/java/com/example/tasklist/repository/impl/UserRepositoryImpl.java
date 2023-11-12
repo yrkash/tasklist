@@ -164,7 +164,7 @@ public class UserRepositoryImpl implements UserRepository {
     public boolean isTaskOwner(Long userId, Long taskId) {
         try {
             Connection connection = dataSourceConfig.getConnection();
-            PreparedStatement statement = connection.prepareStatement(INSERT_USER_ROLE);
+            PreparedStatement statement = connection.prepareStatement(IS_TASK_OWNER);
             statement.setLong(1, userId);
             statement.setLong(2, taskId);
             try(ResultSet rs = statement.executeQuery()) {

@@ -1,8 +1,8 @@
 package com.example.tasklist.service.impl;
 
 import com.example.tasklist.domain.exception.ResourceMappingException;
-import com.example.tasklist.domain.user.Status;
-import com.example.tasklist.domain.user.Task;
+import com.example.tasklist.domain.task.Status;
+import com.example.tasklist.domain.task.Task;
 import com.example.tasklist.repository.TaskRepository;
 import com.example.tasklist.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional(readOnly = true)
-    public Task getById(Long id) {
+    public com.example.tasklist.domain.task.Task getById(Long id) {
 
         return taskRepository.findById(id)
                 .orElseThrow(() -> new ResourceMappingException("Task not found."));
@@ -27,14 +27,14 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Task> getAllByUserId(Long id) {
+    public List<com.example.tasklist.domain.task.Task> getAllByUserId(Long id) {
 
         return taskRepository.findAllByUserId(id);
     }
 
     @Override
     @Transactional
-    public Task update(Task task) {
+    public Task update(com.example.tasklist.domain.task.Task task) {
         if (task.getStatus() == null) {
             task.setStatus(Status.TODO);
         }

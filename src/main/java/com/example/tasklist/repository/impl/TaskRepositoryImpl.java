@@ -1,7 +1,7 @@
 package com.example.tasklist.repository.impl;
 
 import com.example.tasklist.domain.exception.ResourceMappingException;
-import com.example.tasklist.domain.user.Task;
+import com.example.tasklist.domain.task.Task;
 import com.example.tasklist.repository.DataSourceConfig;
 import com.example.tasklist.repository.TaskRepository;
 import com.example.tasklist.repository.mappers.TaskRowMapper;

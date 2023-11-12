@@ -1,4 +1,4 @@
-package com.example.tasklist.domain.user;
+package com.example.tasklist.domain.task;
 
 public enum Status {
 
