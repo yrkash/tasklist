@@ -2,7 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.example.tasklist.repository.UserRepository">
+
     <resultMap id="UserResultMap" type="com.example.tasklist.domain.user.User" autoMapping="false">
         <id property="id" column="user_id"/>
         <result property="name" column="user_name"/>
@@ -11,7 +13,7 @@
         <collection property="roles"
                     ofType="com.example.tasklist.domain.user.Role"
                     autoMapping="false">
-                <result property="name" column="user_role_role"/>
+            <result property="name" column="user_role_role"/>
         </collection>
         <collection property="tasks"
                     ofType="com.example.tasklist.domain.task.Task"
@@ -19,29 +21,7 @@
                     autoMapping="false"/>
     </resultMap>
 
-    <select id="isTaskOwner" resultType="boolean">
-        SELECT exists(
-        SELECT 1
-        FROM users_tasks
-        WHERE user_id = #{userId}
-        AND task_id = #{taskId}
-        )
-    </select>
-
-    <insert id="create" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
-        INSERT INTO users (name, username, password)
-        VALUES (#{name}, #{username}, #{password})
-    </insert>
-
-    <update id="update">
-        UPDATE users
-        SET name = #{name},
-        username = #{username},
-        password = #{password}
-        WHERE id = #{id}
-    </update>
-
-    <select id="findById" resultType="UserResultMap">
+    <select id="findById" resultMap="UserResultMap">
         SELECT u.id as user_id,
         u.name as user_name,
         u.username as user_username,
@@ -59,7 +39,7 @@
         WHERE u.id = #{id}
     </select>
 
-    <select id="findByUsername" resultType="UserResultMap">
+    <select id="findByUsername" resultMap="UserResultMap">
         SELECT u.id as user_id,
         u.name as user_name,
         u.username as user_username,
@@ -77,13 +57,36 @@
         WHERE u.username = #{username}
     </select>
 
+    <update id="update">
+        UPDATE users
+        SET name = #{name},
+        username = #{username},
+        password = #{password}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="create" keyProperty="id" keyColumn="id" useGeneratedKeys="true">
+        INSERT INTO users (name, username, password)
+        VALUES (#{name}, #{username}, #{password})
+    </insert>
+
     <insert id="insertUserRole">
         INSERT INTO users_roles (user_id, role)
-        VALUES (#{userId}, #{role})
+        VALUES (#{user_id}, #{role})
     </insert>
+
+    <select id="isTaskOwner" resultType="boolean">
+        SELECT exists(
+        SELECT 1
+        FROM users_tasks
+        WHERE user_id = #{userId}
+        AND task_id = #{taskId}
+        )
+    </select>
 
     <delete id="delete">
         DELETE FROM users
         WHERE id = #{id}
     </delete>
+
 </mapper>
