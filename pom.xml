@@ -22,6 +22,7 @@
 		<jakarta-validation.version>3.0.2</jakarta-validation.version>
 		<jjwt.version>0.11.5</jjwt.version>
 		<mybatis.version>3.0.1</mybatis.version>
+		<luquibase.version>4.19.0</luquibase.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,8 +54,12 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>${mybatis.version}</version>
 		</dependency>
-
-
+		<!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
