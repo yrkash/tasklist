@@ -20,4 +20,5 @@ security:
     secret: MTExMTExMTExMTExMWRzY3ZmZHZkIGtuYmdrbWxrZGtsY3h6azsnO2MnO2N6OycNCnonDQpjDQp4dnNhY2RzdmYNCiBnIG5oO2wgbCw7Y3Y=
     access: 3600000
     refresh: 25920000000
-
+springdoc:
+  override-with-generic-response: false
