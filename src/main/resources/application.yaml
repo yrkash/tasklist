@@ -1,8 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/tasklist?currentSchema=tasklist
-    username: postgres
-    password: postgres
+#    url: jdbc:postgresql://localhost:5432/tasklist?currentSchema=tasklist
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+#    username: postgres
+    password: ${SPRING_DATASOURCE_PASSWORD}
+#    password: postgres
     driver-class-name: org.postgresql.Driver
   sql:
     init:
