@@ -1,5 +1,9 @@
 version: '3'
 
+volumes:
+  cache:
+    driver: local
+
 services:
   db:
     image: postgres:15.1-alpine
@@ -24,3 +28,12 @@ services:
       - SPRING_DATASOURCE_PASSWORD=postgres
     ports:
       - '8080:8080'
+  redis:
+    image: redis:7.2-rc-alpine
+    restart: always
+    container_name: redis
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass MTIzNDU=
+    volumes:
+      - cache:/data
