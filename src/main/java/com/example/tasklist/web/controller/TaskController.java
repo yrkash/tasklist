@@ -51,7 +51,7 @@ public class TaskController {
         taskService.delete(id);
     }
 
-    @PostMapping("/{id}/images")
+    @PostMapping("/{id}/image")
     @Operation(summary = "Upload image to task")
     @PreAuthorize("canAccessTask(#id)")
     public void uploadImage(@PathVariable Long id,

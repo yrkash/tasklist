@@ -25,7 +25,6 @@ public class ImageServiceImpl implements ImageService {
 
     @Override
     public String upload(TaskImage image) {
-
         try {
             createBucket();
         } catch (Exception e) {

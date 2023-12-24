@@ -13,7 +13,7 @@ import javax.naming.AuthenticationException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 public class ControllerAdvice {
 
     @ExceptionHandler(ResourceNotFoundException.class)
@@ -71,7 +71,7 @@ public class ControllerAdvice {
     @ExceptionHandler(ImageUploadException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ExceptionBody handleImageUpload(ImageUploadException e) {
-        return new ExceptionBody("Image upload failed." + e.getMessage());
+        return new ExceptionBody(e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
