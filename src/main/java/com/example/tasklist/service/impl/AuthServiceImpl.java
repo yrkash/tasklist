@@ -29,7 +29,7 @@ public class AuthServiceImpl implements AuthService {
         jwtResponse.setAccessToken(jwtTokenProvider.createAccessToken(user.getId(), user.getUsername(), user.getRoles()));
         jwtResponse.setRefreshToken(jwtTokenProvider.createRefreshToken(user.getId(), user.getUsername()));
         return jwtResponse;
-    }   
+    }
 
     @Override
     public JwtResponse refresh(String refreshToken) {

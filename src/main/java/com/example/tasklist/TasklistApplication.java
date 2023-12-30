@@ -13,13 +13,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableCaching
 public class TasklistApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		SpringApplication.run(TasklistApplication.class, args);
-	}
-	@Bean
-	public CacheManager cacheManager() {
-		return new ConcurrentMapCacheManager();
-	}
+        SpringApplication.run(TasklistApplication.class, args);
+    }
+
+    @Bean
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager();
+    }
 
 }
