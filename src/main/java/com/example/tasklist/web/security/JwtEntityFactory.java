@@ -19,6 +19,7 @@ public class JwtEntityFactory {
                 mapToGrantedAuthorities(new ArrayList<>(user.getRoles()))
         );
     }
+
     private static List<GrantedAuthority> mapToGrantedAuthorities(List<Role> roles) {
         return roles.stream()
                 .map(Enum::name)

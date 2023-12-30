@@ -40,9 +40,9 @@ public class CustomMethodSecurityExpressionRoot extends SecurityExpressionRoot i
     }
 
     private boolean hasAnyRole(Authentication authentication, Role... roles) {
-        for(Role role: roles) {
+        for (Role role : roles) {
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
-            if(authentication.getAuthorities().contains(authority)) {
+            if (authentication.getAuthorities().contains(authority)) {
                 return true;
             }
         }
@@ -52,7 +52,7 @@ public class CustomMethodSecurityExpressionRoot extends SecurityExpressionRoot i
     public boolean canAccessTask(Long taskId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         JwtEntity user = (JwtEntity) authentication.getPrincipal();
-        Long id =  user.getId();
+        Long id = user.getId();
         return userService.isTaskOwner(id, taskId);
 
     }

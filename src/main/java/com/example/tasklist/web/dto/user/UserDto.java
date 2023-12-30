@@ -16,20 +16,20 @@ public class UserDto {
     @NotNull(message = "Id must be not null", groups = OnUpdate.class)
     private Long id;
     @Schema(description = "name", example = "John Doe")
-    @NotNull(message = "Name must be not null", groups = { OnUpdate.class, OnCreate.class} )
-    @Length(max = 255, message = "Name must be smaller than 255 characters", groups = { OnUpdate.class, OnCreate.class})
+    @NotNull(message = "Name must be not null", groups = {OnUpdate.class, OnCreate.class})
+    @Length(max = 255, message = "Name must be smaller than 255 characters", groups = {OnUpdate.class, OnCreate.class})
     private String name;
     @Schema(description = "user email", example = "johndoe@gmail.com")
-    @NotNull(message = "Username must be not null", groups = { OnUpdate.class, OnCreate.class} )
-    @Length(max = 255, message = "Username must be smaller than 255 characters", groups = { OnUpdate.class, OnCreate.class})
+    @NotNull(message = "Username must be not null", groups = {OnUpdate.class, OnCreate.class})
+    @Length(max = 255, message = "Username must be smaller than 255 characters", groups = {OnUpdate.class, OnCreate.class})
     private String username;
     @Schema(description = "User crypted password", example = "$2a$10$Xl0yhvzLIaJCDdKBS0Lld.ksK7c2Zytg/ZKFdtIYYQUv8rUfvCR4W")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @NotNull(message = "Password must be not null", groups = { OnUpdate.class, OnCreate.class} )
+    @NotNull(message = "Password must be not null", groups = {OnUpdate.class, OnCreate.class})
     private String password;
     @Schema(description = "User password confirmation", example = "$2a$10$Xl0yhvzLIaJCDdKBS0Lld.ksK7c2Zytg/ZKFdtIYYQUv8rUfvCR4W")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @NotNull(message = "Confirmation must be not null", groups = OnCreate.class )
+    @NotNull(message = "Confirmation must be not null", groups = OnCreate.class)
     private String passwordConfirmation;
 
 }

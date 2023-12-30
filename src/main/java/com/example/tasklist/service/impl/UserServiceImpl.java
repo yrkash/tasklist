@@ -22,9 +22,10 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
     @Override
     @Transactional(readOnly = true)
-    @Cacheable (value = "UserService::getById", key = "#id")
+    @Cacheable(value = "UserService::getById", key = "#id")
     public User getById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found."));
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable (value = "UserService::getByUsername", key = "#username")
+    @Cacheable(value = "UserService::getByUsername", key = "#username")
     public User getByUsername(String username) {
 
         return userRepository.findByUsername(username)
@@ -43,7 +44,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Caching(put = {
             @CachePut(value = "UserService::getById", key = "#user.id"),
-            @CachePut(value = "UserService::getByUsername", key="#user.username")
+            @CachePut(value = "UserService::getByUsername", key = "#user.username")
     })
     public User update(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Caching(cacheable = {
             @Cacheable(value = "UserService::getById", key = "#user.id"),
-            @Cacheable(value = "UserService::getByUsername", key="#user.username")
+            @Cacheable(value = "UserService::getByUsername", key = "#user.username")
     })
     public User create(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {

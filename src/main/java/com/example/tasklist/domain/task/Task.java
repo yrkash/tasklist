@@ -23,7 +23,7 @@ public class Task implements Serializable {
 
     private LocalDateTime expirationDate;
 
-    @Column(name ="image")
+    @Column(name = "image")
     @CollectionTable(name = "tasks_images")
     @ElementCollection
     private List<String> images;
