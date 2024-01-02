@@ -22,7 +22,6 @@ We have two main classes - User and Task.
 
 User class represents user in this application. User can login, create and update tasks.
 
-
 User can have roles - ROLE_USER or ROLE_ADMIN.
 
 Task class represents task in this application. Task can be created by user.
