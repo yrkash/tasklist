@@ -14,13 +14,14 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
     private String name;
     private String username;
     private String password;
+
     @Transient
     private String passwordConfirmation;
 
@@ -30,9 +31,10 @@ public class User implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private Set<Role> roles;
 
-    @CollectionTable(name = "users_tasks")
-    @OneToMany()
-    @JoinColumn(name = "task_id")
+//    @CollectionTable(name = "users_tasks")
+    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "task_id")
+    @JoinTable(inverseJoinColumns = @JoinColumn(name = "task_id"))
     private List<Task> tasks;
 
 

@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 public class Task implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
@@ -25,6 +25,6 @@ public class Task implements Serializable {
 
     @Column(name = "image")
     @CollectionTable(name = "tasks_images")
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> images;
 }
