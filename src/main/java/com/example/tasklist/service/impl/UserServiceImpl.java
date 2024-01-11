@@ -24,8 +24,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-//    @Transactional(readOnly = true)
-//    @Cacheable(value = "UserService::getById", key = "#id")
+    @Transactional(readOnly = true)
+    @Cacheable(value = "UserService::getById", key = "#id")
     public User getById(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found."));
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-//    @Cacheable(value = "UserService::getByUsername", key = "#username")
+    @Cacheable(value = "UserService::getByUsername", key = "#username")
     public User getByUsername(String username) {
 
         return userRepository.findByUsername(username)
@@ -55,8 +55,12 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     @Caching(cacheable = {
-            @Cacheable(value = "UserService::getById", key = "#user.id"),
-            @Cacheable(value = "UserService::getByUsername", key = "#user.username")
+            @Cacheable(value = "UserService::getById",
+                    condition = "#user.id!=null",
+                    key = "#user.id"),
+            @Cacheable(value = "UserService::getByUsername",
+                    condition = "#user.username!=null",
+                    key = "#user.username")
     })
     public User create(User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
@@ -74,7 +78,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    @Cacheable(value = "UserService::isTaskOwner", key = "#userId + '.' + #taskId")
+    @Cacheable(value = "UserService::isTaskOwner",
+            key = "#userId + '.' + #taskId")
     public boolean isTaskOwner(Long userId, Long taskId) {
         return userRepository.isTaskOwner(userId, taskId);
     }
