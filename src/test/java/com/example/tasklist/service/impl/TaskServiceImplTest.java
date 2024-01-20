@@ -28,7 +28,7 @@ import java.util.Optional;
 @ActiveProfiles("test")
 @Import(TestConfig.class)
 @ExtendWith(MockitoExtension.class)
-public class TestServiceImplTest {
+public class TaskServiceImplTest {
 
     @MockBean
     private TaskRepository taskRepository;
