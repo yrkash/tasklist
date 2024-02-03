@@ -41,13 +41,13 @@ public class TaskServiceImpl implements TaskService {
         return taskRepository.findAllByUserId(id);
     }
 
-    /*@Override
+    @Override
     @Transactional(readOnly = true)
     public List<Task> getAllSoonTasks(final Duration duration) {
         LocalDateTime now = LocalDateTime.now();
         return taskRepository.findAllSoonTasks(Timestamp.valueOf(now),
                 Timestamp.valueOf(now.plus(duration)));
-    }*/
+    }
 
     @Override
     @Transactional
